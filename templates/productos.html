@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Filtrar Productos</title>
+</head>
+<body>
+  <h1>Filtrar Productos</h1>
+  <form method="get" action="/productos">
+    Talla:
+    <select name="talla">
+      <option value="">Todas</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+    </select>
+    Marca:
+    <select name="marca">
+      <option value="">Todas</option>
+      <option value="Nike">Nike</option>
+      <option value="Adidas">Adidas</option>
+      <option value="Puma">Puma</option>
+    </select>
+    Precio Mín:
+    <input type="number" name="precio_min" step="0.01" />
+    Precio Máx:
+    <input type="number" name="precio_max" step="0.01" />
+    <button type="submit">Buscar</button>
+  </form>
+
+  <h2>Resultados</h2>
+  <table border="1">
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Talla</th><th>Precio</th><th>Marca</th>
+    </tr>
+    {% for prod in productos %}
+    <tr>
+      <td>{{ prod[0] }}</td>
+      <td>{{ prod[1] }}</td>
+      <td>{{ prod[2] }}</td>
+      <td>{{ prod[3] }}</td>
+      <td>{{ prod[4] }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">No hay productos</td></tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
